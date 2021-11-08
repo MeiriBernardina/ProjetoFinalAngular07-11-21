@@ -1,0 +1,126 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Cliente</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+
+  </div>
+  <div class="col-md-6">
+      <table class="table">
+          <thead class="thead-light">
+              <tr>
+                  <th>Nome Cliente</th>
+                  <th></th>
+                  <th>Exp. Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let pd of service.list">
+                  <td (click)="populateForm(pd)">{{pd.clienteId}}</td>
+                  <td (click)="populateForm(pd)">{{pd.nome}}</td>
+                  <td (click)="populateForm(pd)">{{pd.cpf}}</td>
+                  <td (click)="populateForm(pd)">{{pd.telefone}}</td>
+                  <td (click)="populateForm(pd)">{{pd.email}}</td>
+                  <td (click)="populateForm(pd)">{{pd.endereco}}</td>
+                  <td (click)="populateForm(pd)">{{pd.nomeAnimal}}</td>
+                  <td (click)="populateForm(pd)">{{pd.nomeRaca}}</td>
+                  <td (click)="populateForm(pd)">{{pd.generoAnimal}}</td>
+                  <td (click)="populateForm(pd)">{{pd.comportamento}}</td>
+                  <td>
+                      <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd. clienteId)"></i>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<form novalidate autocomplete="off" #form="ngForm" (submit)=" onSubmit(form)">
+  <input type="hidden" name="AnimalId" [value]="service.formData. clienteId" />
+
+<div class="form row">
+  <div class="form-group col-md-6">
+      <label>Nome do Cliente:</label>
+      <input class="form-control form-control-lg" placeholder="16 Digit Card Number" name="Nome"
+          #nome="ngModel" [(ngModel)]="service.formData. nome"
+          required maxlength="16" minlength="1" [class.invalid]=" nome.invalid &&  nome.touched">
+  </div>
+</div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+          <label>CPF</label>
+          <input class="form-control form-control-lg" placeholder="Security Code" name=" CPF"
+              #cpf="ngModel" [(ngModel)]="service.formData.cpf"
+              required maxlength="11" minlength="1" [class.invalid]=" cpf.invalid &&  cpf.touched">
+      </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Telefone</label>
+            <input class="form-control form-control-lg" placeholder="Security Code" name=" Telefone"
+                #telefone="ngModel" [(ngModel)]="service.formData.telefone"
+                required maxlength="9" minlength="1" [class.invalid]=" telefone.invalid &&  telefone.touched">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label> Email</label>
+              <input class="form-control form-control-lg" placeholder="Security Code" name="  Email"
+                  #email="ngModel" [(ngModel)]="service.formData. email"
+                  required maxlength="20" minlength="1" [class.invalid]="  email.invalid &&   email.touched">
+          </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label> Endereço</label>
+                <input class="form-control form-control-lg" placeholder="Security Code" name="  Endereco"
+                    #endereco="ngModel" [(ngModel)]="service.formData. endereco"
+                    required maxlength="20" minlength="1" [class.invalid]="  endereco.invalid &&   endereco.touched">
+            </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label> Nome animal</label>
+              <input class="form-control form-control-lg" placeholder="Nome animal" name="NomeAnimal"
+                  #nomeAnimal="ngModel" [(ngModel)]="service.formData. nomeAnimal"
+                  required maxlength="20" minlength="1" [class.invalid]="  nomeAnimal.invalid &&   nomeAnimal.touched">
+          </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label> Nome raça</label>
+            <input class="form-control form-control-lg" placeholder="NomeRaca" name="NomeRaca"
+                #nomeRaca="ngModel" [(ngModel)]="service.formData. nomeRaca"
+                required maxlength="20" minlength="1" [class.invalid]="  nomeRaca.invalid &&   nomeRaca.touched">
+        </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+          <label> Genero animal</label>
+          <input class="form-control form-control-lg" placeholder="GeneroAnimal" name="GeneroAnimal"
+              #generoAnimal="ngModel" [(ngModel)]="service.formData. generoAnimal"
+              required maxlength="20" minlength="1" [class.invalid]="  generoAnimal.invalid &&   generoAnimal.touched">
+      </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label> Comportamento</label>
+        <input class="form-control form-control-lg" placeholder="Comportamento" name="Comportamento"
+            #comportamento="ngModel" [(ngModel)]="service.formData.comportamento"
+            required maxlength="20" minlength="1" [class.invalid]="  comportamento.invalid &&   comportamento.touched">
+    </div>
+</div>
+
+      </div>
+
+  </div>
+  <div class="form-group">
+      <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+  </div>
+</form>
+
+
+

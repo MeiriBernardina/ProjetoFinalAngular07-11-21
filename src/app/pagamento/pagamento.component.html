@@ -1,0 +1,56 @@
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Pagamento</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+
+  </div>
+  <div class="col-md-6">
+      <table class="table">
+          <thead class="thead-light">
+              <tr>
+                  <th>Card Owner</th>
+                  <th>Card Number</th>
+                  <th>Exp. Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let pd of service.list">
+                  <td (click)="populateForm(pd)">{{pd. pagamentoId}}</td>
+                  <td (click)="populateForm(pd)">{{pd. valorTotal}}</td>
+                  <td (click)="populateForm(pd)">{{pd. clienteId}}</td>
+                  <td>
+                      <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd. pagamentoId)"></i>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<form novalidate autocomplete="off" #form="ngForm" (submit)=" onSubmit(form)">
+  <input type="hidden" name="AnimalId" [value]="service.formData.  pagamentoId" />
+  <div class="form-group">
+      <label> Valor_total</label>
+      <input class="form-control form-control-lg" placeholder="16 Digit Card Number" name=" Valor_total"
+          #valor_total="ngModel" [(ngModel)]="service.formData.  valorTotal"
+          required maxlength="16" minlength="16" [class.invalid]="  valor_total.invalid &&   valor_total.touched">
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+          <label> Cliente Id</label>
+          <input class="form-control form-control-lg" placeholder="Security Code" name="  ClienteId"
+              #ClienteId="ngModel" [(ngModel)]="service.formData.clienteId"
+              required maxlength="3" minlength="3" [class.invalid]="  ClienteId.invalid &&   ClienteId.touched">
+      </div>
+  </div>
+
+  <div class="form-group">
+      <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+  </div>
+</form>
+
+
+
+
